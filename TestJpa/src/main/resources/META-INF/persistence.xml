@@ -1,0 +1,21 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+  version="2.1">
+
+  <persistence-unit name="TESTJPA_PU" transaction-type="RESOURCE_LOCAL">
+    <description> Hibernate JPA Configuration Example</description>
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//localhost:1521/PDB1" />
+      <property name="javax.persistence.jdbc.user" value="HHGEN_OWNER" />
+      <property name="javax.persistence.jdbc.password" value="hhgen_owner" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
+      <!-- org.hibernate.dialect.Oracle12cDialect testjpa.Oracle19cDialect -->
+    </properties>
+  </persistence-unit>
+
+</persistence>
