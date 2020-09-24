@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MiscJavaEE/MiscJavaEE.iml" filepath="$PROJECT_DIR$/MiscJavaEE/MiscJavaEE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MiscJavaEEEJB/MiscJavaEEEJB.iml" filepath="$PROJECT_DIR$/MiscJavaEEEJB/MiscJavaEEEJB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MiscJavaEEWeb/MiscJavaEEWeb.iml" filepath="$PROJECT_DIR$/MiscJavaEEWeb/MiscJavaEEWeb.iml" />
+    </modules>
+  </component>
+</project>
