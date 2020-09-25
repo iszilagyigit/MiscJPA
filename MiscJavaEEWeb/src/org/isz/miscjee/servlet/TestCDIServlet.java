@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,9 @@ import org.isz.miscjee.cdi.Counter;
  */
 @WebServlet("/TestCDIServlet")
 public class TestCDIServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
+	private static final String CRLF = " \r\n";
 
 	@Inject
 	@Named("sessioncnt")
@@ -34,18 +35,20 @@ public class TestCDIServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.getWriter()
 		.append("Served at: " + request.getContextPath() + "\r\n")
-		.append(" RequestCounter: " + requestCounter.getName() + " " + requestCounter.getCount()+" \r\n")
-		.append(" SessionCounter: " + sessionCounter.getName() + " " + sessionCounter.getCount()+" \r\n")
-		.append(" ApplicationCounter: " + applCounter.getName() + " " + applCounter.getCount()+" \r\n");
+		.append(" RequestCounter: " + requestCounter.getName() + " " + requestCounter.getCount() + CRLF)
+		.append(" SessionCounter: " + sessionCounter.getName() + " " + sessionCounter.getCount() + CRLF)
+		.append(" ApplicationCounter: " + applCounter.getName() + " " + applCounter.getCount() + CRLF);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		doGet(request, response);
 	}
 }
