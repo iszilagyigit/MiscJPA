@@ -3,6 +3,9 @@ package org.isz.miscjee.cdi;
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
 
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 // import javax.inject.Singleton  -- NPE;
 import javax.inject.Named;
@@ -28,5 +31,15 @@ public class SessionScopedCounter implements Counter, Serializable {
 	@Override
 	public long getCount() {
 		return count.getAndIncrement();
+	}
+
+	@PreDestroy
+	private void preDestroy() {
+		System.out.println("SessionScopedCounter - preDestroy");
+	}
+
+	@PostConstruct
+	private void postConstruct() {
+		System.out.println("SessionScopedCounter - postConstruct");
 	}
 }

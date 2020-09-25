@@ -27,11 +27,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="library" scope="PROVIDED" name="JBoss eap 7.1.6" level="application_server_libraries" />
-    <orderEntry type="library" name="JBoss Weld-2.0.3" level="application" />
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.web.container" level="application" />
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.module.container" level="application" />
     <orderEntry type="library" name="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/WildFly 16.0 Runtime" level="application" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" scope="PROVIDED" name="JBoss Weld-2.0.3" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="JBoss eap 7.1.6" level="application_server_libraries" />
   </component>
 </module>

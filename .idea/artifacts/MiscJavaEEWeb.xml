@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MiscJavaEEWeb">
+    <output-path>$PROJECT_DIR$/out/artifacts/MiscJavaEEWeb</output-path>
+    <root id="archive" name="MiscJavaEEWeb.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="MiscJavaEEWeb" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="MiscJavaEEWeb/web/Web" />
+    </root>
+  </artifact>
+</component>
