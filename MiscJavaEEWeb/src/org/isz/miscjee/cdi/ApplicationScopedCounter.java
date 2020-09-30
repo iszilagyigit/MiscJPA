@@ -2,11 +2,12 @@ package org.isz.miscjee.cdi;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import javax.interceptor.Interceptors;
+import org.isz.miscjee.interceptor.CounterInterceptor;
 
 /**
  * Example application scoped "POJO Bean".
@@ -16,6 +17,7 @@ import javax.inject.Named;
  */
 @ApplicationScoped
 @Named("applcnt")
+@Interceptors(CounterInterceptor.class)
 public class ApplicationScopedCounter implements Counter  {
 
 	private AtomicLong count = new AtomicLong(0);

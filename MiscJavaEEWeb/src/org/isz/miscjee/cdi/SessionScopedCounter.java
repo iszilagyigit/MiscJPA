@@ -3,17 +3,18 @@ package org.isz.miscjee.cdi;
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
 
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 // import javax.inject.Singleton  -- NPE;
 import javax.inject.Named;
+import javax.interceptor.Interceptors;
+import org.isz.miscjee.interceptor.CounterInterceptor;
 
 /**
  * Example session scoped "POJO Bean".
  * 
- * @implNote:
+ * @implNote
  * Implements Serializable otherwise:
  * WELD-000072: Bean declaring a passivating scope must be passivation capable. (implements serializable)
  * 
@@ -28,6 +29,7 @@ public class SessionScopedCounter implements Counter, Serializable {
 	
 	private AtomicLong count = new AtomicLong(0);
 
+	@Interceptors(CounterInterceptor.class)
 	@Override
 	public long getCount() {
 		return count.getAndIncrement();
