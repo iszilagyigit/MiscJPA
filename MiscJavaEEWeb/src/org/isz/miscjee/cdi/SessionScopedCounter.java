@@ -8,8 +8,7 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
 // import javax.inject.Singleton  -- NPE;
 import javax.inject.Named;
-import javax.interceptor.Interceptors;
-import org.isz.miscjee.interceptor.CounterInterceptor;
+import org.isz.miscjee.interceptor.CounterIntercept;
 
 /**
  * Example session scoped "POJO Bean".
@@ -29,7 +28,7 @@ public class SessionScopedCounter implements Counter, Serializable {
 	
 	private AtomicLong count = new AtomicLong(0);
 
-	@Interceptors(CounterInterceptor.class)
+	@CounterIntercept
 	@Override
 	public long getCount() {
 		return count.getAndIncrement();

@@ -6,8 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import javax.interceptor.Interceptors;
-import org.isz.miscjee.interceptor.CounterInterceptor;
+import org.isz.miscjee.interceptor.CounterIntercept;
 
 /**
  * Example application scoped "POJO Bean".
@@ -17,7 +16,7 @@ import org.isz.miscjee.interceptor.CounterInterceptor;
  */
 @ApplicationScoped
 @Named("applcnt")
-@Interceptors(CounterInterceptor.class)
+@CounterIntercept
 public class ApplicationScopedCounter implements Counter  {
 
 	private AtomicLong count = new AtomicLong(0);
