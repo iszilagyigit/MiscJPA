@@ -5,6 +5,8 @@ import javax.annotation.Priority;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Interceptor für counter.
@@ -16,15 +18,29 @@ import javax.interceptor.InvocationContext;
 @Priority(Interceptor.Priority.APPLICATION)
 public class CounterInterceptor implements Serializable
 {
+  private static final Logger LOGGER = LoggerFactory.getLogger(CounterInterceptor.class.getName());
 
+  /**
+   * Example Logging.
+   *
+   * @param ctx Invocation context
+   * @return Result from proceed
+   * @throws Exception Exception
+   */
   @AroundInvoke
   public Object counterLogging(final InvocationContext ctx) throws Exception  {
     final Class<?> aClass = ctx.getMethod().getDeclaringClass();
     final String methodName = ctx.getMethod().getName();
-    System.out.println("CounterInterceptor: *** "   + aClass + " ***");
-    System.out.println("CounterInterceptor - start " + methodName + " ");
+    if (LOGGER.isInfoEnabled())
+    {
+      LOGGER.info(String.format("CounterInterceptor: *** %s ***", aClass));
+      LOGGER.info(String.format("CounterInterceptor - start %s ", methodName));
+    }
     Object ret = ctx.proceed();
-    System.out.println("CounterInterceptor - end " + methodName + " ");
+    if (LOGGER.isInfoEnabled())
+    {
+      LOGGER.info(String.format("CounterInterceptor - end %s ", methodName));
+    }
     return ret;
   }
 }

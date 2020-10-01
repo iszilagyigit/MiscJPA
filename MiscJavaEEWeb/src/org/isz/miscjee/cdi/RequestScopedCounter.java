@@ -7,6 +7,8 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import org.isz.miscjee.interceptor.CounterIntercept;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Example application scoped "POJO Bean".
@@ -19,7 +21,8 @@ import org.isz.miscjee.interceptor.CounterIntercept;
 @CounterIntercept
 public class RequestScopedCounter implements Counter {
 
-	private AtomicLong count = new AtomicLong(0);
+	private static final Logger LOGGER = LoggerFactory.getLogger(RequestScopedCounter.class.getName());
+	private final AtomicLong count = new AtomicLong(0);
 
 	@Override
 	public long getCount() {
@@ -28,11 +31,11 @@ public class RequestScopedCounter implements Counter {
 
 	@PreDestroy
 	private void preDestroy() {
-		System.out.println("RequestScopedCounter - preDestroy");
+		LOGGER.info("RequestScopedCounter - preDestroy");
 	}
 
 	@PostConstruct
 	private void postConstruct() {
-		System.out.println("RequestScopedCounter - postConstruct");
+		LOGGER.info("RequestScopedCounter - postConstruct");
 	}
 }

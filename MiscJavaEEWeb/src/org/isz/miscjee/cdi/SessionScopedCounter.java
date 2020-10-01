@@ -6,9 +6,10 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
-// import javax.inject.Singleton  -- NPE;
 import javax.inject.Named;
 import org.isz.miscjee.interceptor.CounterIntercept;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Example session scoped "POJO Bean".
@@ -16,8 +17,9 @@ import org.isz.miscjee.interceptor.CounterIntercept;
  * @implNote
  * Implements Serializable otherwise:
  * WELD-000072: Bean declaring a passivating scope must be passivation capable. (implements serializable)
- * 
- * @author iszilagyi
+ * NullPointerException When bean is import javax.inject.Singleton  -- NPE;
+ *
+ * @author Istvan Szilagyi
  *
  */
 @SessionScoped
@@ -25,8 +27,9 @@ import org.isz.miscjee.interceptor.CounterIntercept;
 public class SessionScopedCounter implements Counter, Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private AtomicLong count = new AtomicLong(0);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SessionScopedCounter.class.getName());
+
+	private final AtomicLong count = new AtomicLong(0);
 
 	@CounterIntercept
 	@Override
@@ -36,11 +39,11 @@ public class SessionScopedCounter implements Counter, Serializable {
 
 	@PreDestroy
 	private void preDestroy() {
-		System.out.println("SessionScopedCounter - preDestroy");
+		LOGGER.info("SessionScopedCounter - preDestroy");
 	}
 
 	@PostConstruct
 	private void postConstruct() {
-		System.out.println("SessionScopedCounter - postConstruct");
+		LOGGER.info("SessionScopedCounter - postConstruct");
 	}
 }

@@ -13,6 +13,8 @@ import org.isz.miscjee.cdi.Counter;
 
 /**
  * Servlet example for CDI, same interface with different scopes.
+ *
+ * @author Istvan Szilagyi
  */
 @WebServlet("/TestCDIServlet")
 public class TestCDIServlet extends HttpServlet {
@@ -32,21 +34,16 @@ public class TestCDIServlet extends HttpServlet {
 	@Named("requestcnt")
 	private Counter requestCounter;
 	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setContentType("text/plain");
 		response.getWriter()
-		.append("Served at: " + request.getContextPath() + "\r\n")
-		.append(" RequestCounter: " + requestCounter.getName() + " " + requestCounter.getCount() + CRLF)
-		.append(" SessionCounter: " + sessionCounter.getName() + " " + sessionCounter.getCount() + CRLF)
-		.append(" ApplicationCounter: " + applCounter.getName() + " " + applCounter.getCount() + CRLF);
+		.append("Served at: ").append(request.getContextPath()).append(CRLF)
+		.append(" RequestCounter: ").append(requestCounter.getName()).append(" ").append(Long.toString(requestCounter.getCount())).append(CRLF)
+		.append(" SessionCounter: ").append(sessionCounter.getName()).append(" ").append(Long.toString(sessionCounter.getCount())).append(CRLF)
+		.append(" ApplicationCounter: ").append(applCounter.getName()).append(" ").append(Long.toString(applCounter.getCount())).append(CRLF);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		doGet(request, response);

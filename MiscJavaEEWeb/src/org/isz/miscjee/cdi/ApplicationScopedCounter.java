@@ -7,6 +7,8 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import org.isz.miscjee.interceptor.CounterIntercept;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Example application scoped "POJO Bean".
@@ -19,7 +21,9 @@ import org.isz.miscjee.interceptor.CounterIntercept;
 @CounterIntercept
 public class ApplicationScopedCounter implements Counter  {
 
-	private AtomicLong count = new AtomicLong(0);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationScopedCounter.class.getName());
+
+	private final AtomicLong count = new AtomicLong(0);
 
 	@Override
 	public long getCount() {
@@ -28,11 +32,11 @@ public class ApplicationScopedCounter implements Counter  {
 
 	@PreDestroy
 	private void preDestroy() {
-		System.out.println("ApplicationScopedCounter - preDestroy");
+		LOGGER.info("ApplicationScopedCounter - preDestroy");
 	}
 
 	@PostConstruct
 	private void postConstruct() {
-		System.out.println("ApplicationScopedCounter - postConstruct");
+		LOGGER.info("ApplicationScopedCounter - postConstruct");
 	}
 }
