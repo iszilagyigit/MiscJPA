@@ -18,7 +18,10 @@ import org.slf4j.LoggerFactory;
 @Priority(Interceptor.Priority.APPLICATION)
 public class CounterInterceptor implements Serializable
 {
-  private static final Logger LOGGER = LoggerFactory.getLogger(CounterInterceptor.class.getName());
+
+	private static final long serialVersionUID = 1L;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(CounterInterceptor.class.getName());
 
   /**
    * Example Logging.
