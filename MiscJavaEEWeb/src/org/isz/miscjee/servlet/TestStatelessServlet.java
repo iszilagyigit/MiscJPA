@@ -16,10 +16,9 @@ import org.test.ejbs.StatelessEJB;
 /**
  * Test stateless EJB.
  * 
- * Servlet to demonstrate that Stateless EJB are really Stateless :-)
+ * Servlet to demonstrate that Stateless EJB are really Stateless :-).
  * 
  * Already with a few parallel browser calls (when servlets served with different threads)
- * it prints for some calls lines "Call 2" (instead of all over "Call 1").
  * 
  * @author iszilagyi
  *

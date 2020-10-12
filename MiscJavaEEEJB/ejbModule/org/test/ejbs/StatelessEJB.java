@@ -12,14 +12,19 @@ public class StatelessEJB
 
 	public String call1() {
 		this.field = 1;
-		return "Call " + this.field;
+		try {
+			return "Call " + this.field;
+		}finally {
+			this.field = 2;
+		}
+
 	}
 	
 	public String call2() {
 		try {
-			return "Call " + this.field + " " + (this.field != 1 ? "<-----":"");
+			return "Call " + this.field + " " + (this.field != 2 ? "<-----":"");
 		}finally {
-			this.field = 2;
+			this.field = 0;
 		}
 	}
 }
