@@ -1,18 +1,21 @@
 package org.test.ejbs;
 
-import javax.ejb.Stateless;
+import java.io.Serializable;
+
+import javax.ejb.Stateful;
+
 
 /**
- * Example of a not correctly annotated EJB  (@Stateless annotation)
- * regarding the implementation.
  * 
  * @author Istvan Szilagyi
  */
-@Stateless
-public class StatelessEJB
+@Stateful
+public class StatefulEJB implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private int field = 0;
-
+	
 	public String call1() {
 		this.field = 1;
 		try {
@@ -20,6 +23,7 @@ public class StatelessEJB
 		}finally {
 			this.field = 2;
 		}
+
 	}
 	
 	public String call2() {
@@ -27,7 +31,7 @@ public class StatelessEJB
 			final String note = (this.field != 2 ? "<-----":"");
 			return "Call ".concat(String.valueOf(this.field)).concat(note);
 		}finally {
-			this.field = 0;
+			this.field = 3;
 		}
 	}
 }
