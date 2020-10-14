@@ -33,5 +33,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss Weld-2.0.3" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss eap 7.1.6" level="application_server_libraries" />
+    <orderEntry type="module" module-name="MiscJavaEEEJB" />
   </component>
 </module>
