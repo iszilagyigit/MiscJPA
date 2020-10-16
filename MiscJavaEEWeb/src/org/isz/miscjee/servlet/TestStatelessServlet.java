@@ -28,7 +28,7 @@ public class TestStatelessServlet extends HttpServlet {
 	private static final String CRLF = " \r\n";
 	
 	@Inject
-	protected RequestScopedController aController; 
+	private RequestScopedController aController;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
