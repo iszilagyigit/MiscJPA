@@ -6,7 +6,7 @@ import java.util.Random;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import org.test.ejbs.StatelessEJBWithDependent;
+import org.test.ejbs.StatelessEJBWithDependentField;
 
 /**
  * Simple CDI Controller Example.
@@ -21,7 +21,7 @@ public class RequestScopedController {
 	private static final Random random = new Random();
 	
 	@Inject
-	private StatelessEJBWithDependent aBean;
+	private StatelessEJBWithDependentField aBean;
 
 	/**
 	 * Consecutive calls for an injected bean.

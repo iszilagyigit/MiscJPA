@@ -28,7 +28,7 @@ public class TestStatelessServlet extends HttpServlet {
 	private static final String CRLF = " \r\n";
 	
 	@Inject
-	private RequestScopedController aController;
+	private StatelessService aService;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
@@ -37,7 +37,7 @@ public class TestStatelessServlet extends HttpServlet {
 		{
 			final PrintWriter	writer = resp.getWriter();
 			writer.append("Served at: ").append(req.getContextPath()).append(CRLF);
-			aController.loopCalls(writer);
+			aService.loopCalls(writer);
 		} catch (IOException pE)
 		{
 			pE.printStackTrace();

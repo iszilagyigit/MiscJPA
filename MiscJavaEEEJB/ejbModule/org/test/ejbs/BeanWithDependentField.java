@@ -1,17 +1,16 @@
 package org.test.ejbs;
 
-import javax.ejb.Stateless;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import org.test.cdi.IntWrapper;
 
 /**
- * Stateless EJB mit injected dependent member.
+ * Dependent (not session) Bean mit injected dependent member.
  * 
  * @author Istvan Szilagyi
  */
-@Stateless
-public class StatelessEJBWithDependent
+@Dependent
+public class BeanWithDependentField
 {
 	@Inject
 	private IntWrapper wrappedInt;
