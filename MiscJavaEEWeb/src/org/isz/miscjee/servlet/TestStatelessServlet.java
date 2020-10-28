@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  * Test stateless EJB.
  * 
@@ -29,7 +28,7 @@ public class TestStatelessServlet extends HttpServlet {
 	
 	@Inject
 	private StatelessService aService;
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		resp.setContentType("text/plain");

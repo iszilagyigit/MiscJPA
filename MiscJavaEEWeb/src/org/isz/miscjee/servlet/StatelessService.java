@@ -2,6 +2,8 @@ package org.isz.miscjee.servlet;
 
 import java.io.PrintWriter;
 import java.util.Random;
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.test.ejbs.BeanWithDependentField;
@@ -20,11 +22,17 @@ public class StatelessService
   @Inject
   private BeanWithDependentField aBean;
 
+  @Resource
+  private SessionContext sessionContext;
+
   /**
    * Consecutive calls for an injected bean.
    * @param writer output
    */
   public void loopCalls(PrintWriter writer) {
+    writer.append(" SessionContext: " + sessionContext.toString() + CRLF);
+    writer.append(" Beaninfo: " + aBean.info() + CRLF);
+
     for (int i = 0; i <= 20; i++) {
       final String call1 = aBean.call1();
       final String call2 = aBean.call2();
